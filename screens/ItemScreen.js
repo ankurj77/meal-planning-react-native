@@ -6,9 +6,9 @@ function ItemScreen() {
   const route = useRoute();
   const itemID = route.params.itemID;
 
-  const item = MEALS.filter((item) => {
+  const item = MEALS.find((item) => {
     return item.id === itemID;
-  }).at(0);
+  });
 
   return (
     <View>

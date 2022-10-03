@@ -49,10 +49,11 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   itemPressed: {
-    opacity: 0.5,
+    opacity: 0.75,
   },
   innerContainer: {
-    borderRadius: 8,
+    borderRadius: 16,
+    overflow: "hidden"
   },
   details: {
     flexDirection: "row",
