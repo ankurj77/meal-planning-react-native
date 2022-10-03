@@ -1,3 +1,7 @@
+# idea and expo
+.idea/
+.expo/
+
 # Logs
 logs
 *.log
