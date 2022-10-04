@@ -18,30 +18,36 @@ function ItemScreen({navigation}) {
   }, [itemID, navigation])
 
   return (
-    <ScrollView horizontal={false} style={styles.innerContainer}>
+    <ScrollView style={styles.innerContainer}>
       <View>
         <Image source={{uri: item.imageUrl}} style={styles.image} />
         <Text style={styles.title}>{item.title}</Text>
       </View>
       <View style={styles.details}>
-        <Text style={styles.detailsItem}>Vegetarian: {item.isVegetarian ? "Yes" : "No"}</Text>
-        <Text style={styles.detailsItem}>Vegan: {item.isVegan ? "Yes" : "No"}</Text>
-        <Text style={styles.detailsItem}>Lactose Free: {item.isLactoseFree ? "Yes" : "No"}</Text>
-        <Text style={styles.detailsItem}>Gluten Free: {item.isGlutenFree ? "Yes" : "No"}</Text>
-        <Text style={styles.detailsItem}>Ingredients:</Text>
-        <FlatList
-          data={item.ingredients}
-          keyExtractor={(item) => item.id}
-          renderItem={(item) =>
-            <Text style={styles.detailsItemList}>{item.item}</Text>}
-        />
-        <Text style={styles.detailsItem}>Steps:</Text>
-        <FlatList
-          data={item.steps}
-          keyExtractor={(item) => item.id}
-          renderItem={(item) =>
-            <Text style={styles.detailsItemList}>{item.item}</Text>}
-        />
+        {item.isVegetarian ? <Text style={styles.detailsItem}>Vegetarian</Text> : <></>}
+        {item.isVegan ? <Text style={styles.detailsItem}>Vegan</Text> : <></>}
+        {item.isLactoseFree ? <Text style={styles.detailsItem}>Lactose Free</Text> : <></>}
+        {item.isGlutenFree ? <Text style={styles.detailsItem}>Gluten Free</Text> : <></>}
+        <Text style={styles.title}>Ingredients</Text>
+        {
+          item.ingredients.map((itemData, index) => {
+            return (
+              <View key={index}>
+                <Text style={styles.detailsItemList}>{itemData}</Text>
+              </View>
+            );
+          })
+        }
+        <Text style={styles.title}>Steps</Text>
+        {
+          item.steps.map((itemData, index) => {
+            return (
+              <View key={index}>
+                <Text style={styles.detailsItemList}>{itemData}</Text>
+              </View>
+            );
+          })
+        }
       </View>
     </ScrollView>
   );
@@ -67,7 +73,7 @@ const styles = StyleSheet.create({
   },
   details: {
     flexDirection: "column",
-    alignItems: "baseline",
+    alignItems: "stretch",
     justifyContent: "center",
     padding: 8,
     marginBottom: 20,
@@ -79,7 +85,7 @@ const styles = StyleSheet.create({
   },
   detailsItemList: {
     backgroundColor: '#ccc',
-    padding: 2,
+    padding: 6,
     marginHorizontal: 4,
     marginVertical: 2,
     color: 'black',
