@@ -2,6 +2,7 @@ import {Image, Text, View, ScrollView, StyleSheet, FlatList} from "react-native"
 import {useRoute} from "@react-navigation/native";
 import {MEALS} from "../data/dummy-data";
 import {useLayoutEffect} from "react";
+import {storeItemVisited} from "../backend/ItemVisits";
 
 function ItemScreen({navigation}) {
   const route = useRoute();
@@ -15,6 +16,7 @@ function ItemScreen({navigation}) {
     navigation.setOptions({
       title: item.title,
     });
+    storeItemVisited(item);
   }, [itemID, navigation])
 
   return (

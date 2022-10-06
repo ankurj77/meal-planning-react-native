@@ -1,11 +1,9 @@
 import {FlatList, View} from "react-native";
-import {useRoute} from "@react-navigation/native";
 import {CATEGORIES, MEALS} from "../data/dummy-data";
 import ItemTile from "../components/ItemTile";
 import {useLayoutEffect} from "react";
 
-function ItemsScreen({navigation}) {
-  const route = useRoute();
+function ItemsScreen({navigation, route}) {
   const categoryID = route.params.categoryID;
 
   const displayedItems = MEALS.filter((item) => {

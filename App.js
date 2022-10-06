@@ -6,6 +6,7 @@ import ItemsScreen from "./screens/ItemsScreen";
 import ItemScreen from "./screens/ItemScreen";
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import {Ionicons} from '@expo/vector-icons'
+import RecentVisitsScreen from "./screens/RecentVisitsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -29,6 +30,14 @@ function DrawerNavigator() {
         options={{
           title: "All Categories",
           drawerIcon: ({color, size}) => (<Ionicons name="list" color={color} size={size} />)
+        }}
+      />
+      <Drawer.Screen
+        name="RecentVisits"
+        component={RecentVisitsScreen}
+        options={{
+          title: "Recent Visits",
+          drawerIcon: ({color, size}) => (<Ionicons name="eye" color={color} size={size} />)
         }}
       />
     </Drawer.Navigator>
